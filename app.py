@@ -14,7 +14,7 @@ class User(db.Model):
         self.username = username
 
 @app.route("/")
-def hello():
+def show():
     user_list = User.query.all()
     return render_template('index.html', user_list=user_list)
 
