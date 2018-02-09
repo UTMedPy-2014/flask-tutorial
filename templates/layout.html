@@ -4,19 +4,14 @@
   <meta charset="utf-8">
   <title>Users</title>
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/common.css') }}">
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css')}}"
 </head>
 <body>
-  <div class="navbar">
-    navigation
-  </div>
-  <div class="col-md-3"></div>
-  <div class="col-md-9 jumbotron">
-    <h1>Users</h1>
+  <div class="page">
+    <h1>Hello World!</h1>
     <ul class="users">
         {% for user in user_list %}
-            <li> {{ user.id }}: {{ user.username }}</li>
+            <li> {{ user.id }}_{{ user.username }}!</li>
         {% endfor %}
     </ul>
     <form action="{{ url_for('add_user') }}" method="post" class="add-user">
