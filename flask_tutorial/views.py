@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_tutorial import app, db
-from flask_tutorial.models import User
+from flask_tutorial.models import User, Account
 
 @app.route("/")
 def show():
@@ -14,6 +14,16 @@ def add_user():
     if username:
         user = User(username)
         db.session.add(user)
+        db.session.commit()
+
+    return redirect(url_for('show'))
+
+@app.route("/add_account", methods=['POST'])
+def add_account():
+    email = request.form.get('account')
+    if account:
+        account = Account(email)
+        db.session.add(account)
         db.session.commit()
 
     return redirect(url_for('show'))
