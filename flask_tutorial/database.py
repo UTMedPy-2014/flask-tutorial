@@ -7,6 +7,6 @@ engine = create_engine(url, echo=False)
 metadata = MetaData(bind=engine, reflect=True)
 Base = declarative_base(engine)
 
-class TT_user(Base):
-    __tablename__ = "user"
+class Account(Base):
+    __tablename__ = "account"
     __table_args__ = {"autoload": True}
