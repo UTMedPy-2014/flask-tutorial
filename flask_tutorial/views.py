@@ -1,29 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response
-from flask_sqlalchemy import SQLAlchemy
 from flask_tutorial import app, db
-from flask_tutorial.models import User, Account
+from flask_tutorial.models import Account
 
 @app.route("/")
-def show():
-    user_list = User.query.all()
-    return render_template('index.html', user_list=user_list)
-
-@app.route("/add_user", methods=['POST'])
-def add_user():
-    username = request.form.get('username')
-    if username:
-        user = User(username)
-        db.session.add(user)
-        db.session.commit()
-
-    return redirect(url_for('show'))
+def index():
+    account_list = Account.query.all()
+    return render_template('index.html', account_list=account_list)
 
 @app.route("/add_account", methods=['POST'])
 def add_account():
-    email = request.form.get('account')
-    if account:
-        account = Account(email)
+    username = request.form.get('username')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    if username and email and password:
+        account = Account(username, email, password)
         db.session.add(account)
         db.session.commit()
-
-    return redirect(url_for('show'))
+    return redirect(url_for('index'))
