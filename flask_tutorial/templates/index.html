@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Users</title>
+  <title>Accounts</title>
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/common.css') }}">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
@@ -15,13 +15,15 @@
   <div class="col-md-9 jumbotron">
     <h1>Users</h1>
     <ul class="users">
-        {% for user in user_list %}
-            <li> {{ user.id }}: {{ user.username }}</li>
+        {% for account in account_list %}
+            <li> {{ account.id }}: {{ account.username }}: {{ account.email }}</li>
         {% endfor %}
     </ul>
-    <form action="{{ url_for('add_user') }}" method="post" class="add-user">
+    <form action="{{ url_for('add_account') }}" method="post" class="add-account">
         <label for="username">Name:</label>
         <input type="text" size="30" id="username" name="username">
+        <input type="text" size="30" id="email" name="email">
+        <input type="text" size="30" id="password" name="password">
         <input type="submit" value="Add">
     </form>
   </div>
